@@ -19,5 +19,9 @@ The idea is to run the code 'candidate_make_png.ipynb' which will therefore make
 For this size estimation, the code therefore takes the 6" wild-field and cuts out a square of 50 pixels around the coordinates of the source studied. It calculates the noise of this image and identifies the pixels above this noise. From these pixels which are therefore considered as belonging to the source, the code estimates the size of the source and cuts out the square of 50 pixels accordingly.
 
 It is now time to review the pngs that have just been created and identify the sources:
-  - That are too zoomed in and created from the size estimate present in the catalog (generally for this case the 6" image is only composed of a few pixels)
-  - That present several sources on the same image
+  - That are too zoomed in and created from the size estimate present in the catalog (generally for this case the 6" image is only composed of a few pixels),
+  - That present several sources on the same image.
+
+One technique to do this is to use the code 'Classification.ipynb' and create a fake catalog where the sources of the first case have the type "US" and the sources of the second case "NC". Then all that remains is to display the list of sources (with "Source_ID") having the type "US" then the type "NC" and copy/paste the latter into the appropriate code:
+  - If the source is too zoomed in, you must apply the code "candidate_make_png_newcutout.ipynb" which remakes the png with the size estimate made on the 6" observations,
+  - If the image contains multiple sources, you must make a mask on one of the sources using DS9 for each resolution, name it like this: {Source_ID}_{label}, with label being 'Mingo', '12', '06' or '03'. 'Mingo' referring to the 6" resolution. And place the masks in the Mask folder. All you have to do is apply the "candidate_make_png_masked.ipynb" code. For the moment, each image containing multiple sources is present in the catalog as many times as sources it contains. If this is not the case, this way of doing things does not work and you will have to apply modifications to the already existing code.
