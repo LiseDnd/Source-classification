@@ -14,7 +14,7 @@ The file 'candidate_sample_new.fits' is a catalog with 259 radio sources selecte
   - The coordinates of its optical host helping with classification,
   - An estimate of the size of the source.
 
-The idea is to run the code 'candidate_make_png.ipynb' which will therefore make cutouts for each source at each resolution. For the png composed of the 4 resolutions, the size estimate already present in the catalog is preferred if it is not equal to 0, otherwise a new size estimate based on the 6" observations will be preferred. For FITS files, the size estimate on the 6" observations will always be used.
+The aim is to run the code 'candidate_make_png.ipynb' which will therefore make cutouts for each source at each resolution. For the png composed of the 4 resolutions, the size estimate already present in the catalog is used if it is not equal to 0, otherwise a new size estimate based on the 6" observations will be preferred. For FITS files, the size estimate on the 6" observations will always be used.
 
 For this size estimation, the code therefore takes the 6" wild-field and cuts out a square of 50 pixels around the coordinates of the source studied. It calculates the noise of this image and identifies the pixels above this noise. From these pixels which are therefore considered as belonging to the source, the code estimates the size of the source and cuts out the square of 50 pixels accordingly.
 
